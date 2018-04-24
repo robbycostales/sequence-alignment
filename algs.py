@@ -64,6 +64,7 @@ if __name__ == "__main__":
     v = "AAATCA"
 
     # m is the scoring matrix
+    # ORDER: C, T, A, G
     m = [[1, -1, -1, -1],
         [-1, 1, -1, -1],
         [-1, -1, 1, -1],
