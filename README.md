@@ -53,7 +53,7 @@ Note: The first two cases are the most important, but I decided to compare the "
 
 | *sequence 1*   | test_medieval.fasta          | test_medieval.fasta  | ypestis_modern.fasta         |
 |----------------|------------------------------|----------------------|------------------------------|
-| *sequence 2*   | yenterocolitica_modern.fasta | ypestis_modern.fasta | yenterocolitica_modern.fasta |
+| **sequence 2**   | yenterocolitica_modern.fasta | ypestis_modern.fasta | yenterocolitica_modern.fasta |
 | **global**     | 15315                        | 20778                | 15310                        |
 | **local**      | 15809                        | 20779                | 15803                        |
 | **affine**     | 16521                        | 20778                | 16515                        |                     |
