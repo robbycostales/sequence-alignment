@@ -12,6 +12,8 @@ Implementation of sequence alignment algorithms using dynamic programming. Initi
 
 * algs.py - contains all of the alignment algorithms
 
+
+
 ## How to Run ##
 
 1. Decide what kind of alignment you would like to use, and note the appropriate .sh file
@@ -31,17 +33,27 @@ Implementation of sequence alignment algorithms using dynamic programming. Initi
 
 Run the appropriate .sh file with the parameters from steps 2-4 like so:
 
-    `
-    ./local.sh test_medieval.fasta ypestis_modern.fasta -1
-    `
+`
+./local.sh test_medieval.fasta ypestis_modern.fasta -1
+`
 
 Note: for the sequences and scoring matrix path, the directories /scores and /seqs is NOT included. The python file takes care of that for us.
 
 If you get a `permission denied` error, enter the following command
 
-    `chmod +x example.sh`
+`chmod +x example.sh`
 
 and example.sh with the appropriate file name.
+
+
+## Results ##
+
+| test_medieval.fasta | test_medieval.fasta |
+| yenterocolitica_modern.fasta | yenterocolitica_modern.fasta |
+| ---------------- | ------------- |
+| 234 | 1232 |
+
+
 
 ## Assignment Questions ##
 
@@ -51,4 +63,6 @@ and example.sh with the appropriate file name.
 
 See the "How to Run" section above.
 
-### Results ###
+### What are the Results? ###
+
+See the "Results" section above.
