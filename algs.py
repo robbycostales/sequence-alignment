@@ -237,7 +237,7 @@ def local_align(u, v, m, gp):
             alignment.append(("-", v[vcount]))
             vcount += 1
 
-    return dpTable[-1][-1], alignment, dpTable
+    return result, alignment, dpTable
 
 
 
