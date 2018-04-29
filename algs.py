@@ -415,4 +415,6 @@ if __name__ == "__main__":
     else:
         raise
 
-    print x[0]
+    print (x[0])
+    # print (np.matrix(x[1])) # uncomment to print the alignment
+    # print (np.matrix(x[2])) # uncomment to print dynamic programming table
