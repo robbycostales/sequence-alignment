@@ -48,10 +48,10 @@ and example.sh with the appropriate file name.
 
 ## Results ##
 
-| test_medieval.fasta | test_medieval.fasta |
+| test_medieval.fasta          | test_medieval.fasta          |
 | yenterocolitica_modern.fasta | yenterocolitica_modern.fasta |
-| ---------------- | ------------- |
-| 234 | 1232 |
+| ---------------------------- | ---------------------------- |
+| 234                          | 1232                         |
 
 
 
