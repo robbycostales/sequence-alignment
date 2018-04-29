@@ -13,7 +13,6 @@ Implementation of sequence alignment algorithms using dynamic programming. Initi
 * algs.py - contains all of the alignment algorithms
 
 
-
 ## How to Run ##
 
 1. Decide what kind of alignment you would like to use, and note the appropriate .sh file
