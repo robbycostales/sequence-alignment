@@ -6,6 +6,7 @@
 
 import time
 import numpy as np
+import sys
 # local
 
 
@@ -111,7 +112,7 @@ def global_align(u, v, m, gp):
             alignment.append(("-", v[vcount]))
             vcount += 1
 
-    return 0, alignment, dpTable
+    return dpTable[-1][-1], alignment, dpTable
 
 
 
@@ -236,7 +237,7 @@ def local_align(u, v, m, gp):
             alignment.append(("-", v[vcount]))
             vcount += 1
 
-    return 0, alignment, dpTable
+    return dpTable[-1][-1], alignment, dpTable
 
 
 
@@ -349,35 +350,69 @@ def affine_align(u, v, m, gp, ap):
             alignment.append(("-", v[vcount]))
             vcount += 1
 
-    return 0, alignment, dpTable
+    return dpTable[-1][-1], alignment, dpTable
+
+
+def read_matrix(fileName):
+    f = open(fileName, "r")
+
+    matrix = []
+    for i in range(5):
+        x = f.readline()
+        matrix.append(list(x.split(" ")))
+
+    # get score matrix
+    score_matrix = []
+    for i in range(4):
+        row = []
+        for j in range(4):
+            row.append(int(matrix[i+1][j+1].replace("\n", "")))
+        score_matrix.append(row)
+
+    # get mtags
+    mtags = {}
+    for i in range(4):
+        mtags[matrix[i+1][0]] = i
+
+    return score_matrix, mtags
+
+
+def read_sequence(fileName):
+    f = open(fileName, "r")
+
+    # skip first line
+    new = f.readlines()
+
+    sequence = ""
+    for line in new[1:]:
+        line = line.replace("\n", "")
+        sequence += line
+
+    return sequence
+
 
 
 if __name__ == "__main__":
-
     global mtags
-    mtags = {"C":0, "T":1, "A":2, "G":3}
+    # get inputs
+    align_type = sys.argv[1]
+    seq_file_1 = "seqs/" + sys.argv[2]
+    seq_file_2 = "seqs/" + sys.argv[3]
+    score_file = "scores/" + sys.argv[4]
+    gp = float(sys.argv[5])
 
-    # u and v are sequences
-    u = "AAAGAATTCA"
-    v = "AAATCA"
+    u = read_sequence(seq_file_1)
+    v = read_sequence(seq_file_2)
+    m, mtags = read_matrix(score_file)
 
-    # m is the scoring matrix
-    # ORDER: C, T, A, G
-    m = [[1, -1, -1, -1],
-        [-1, 1, -1, -1],
-        [-1, -1, 1, -1],
-        [-1, -1, -1, 1]]
+    if align_type == "global":
+        x = global_align(u, v, m, gp)
+    elif align_type == "local":
+        x = local_align(u, v, m, gp)
+    elif align_type == "affine":
+        ap = float(sys.argv[6])
+        x = affine_align(u, v, m, gp, ap)
+    else:
+        raise
 
-    # gp is gap penalty
-    gp = -1
-    # ap is affine penalty (only for affine)
-    ap = -0.1
-
-    # do global align
-    x = global_align(u, v, m, gp)
-
-    # do local align
-    y = local_align(u, v, m, gp)
-
-    # do global w/ affine gap weights
-    z = affine_align(u, v, m, gp, ap)
+    print x[0]
